@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     // Make module available as dependency.
-    _ = b.addModule("wav", .{ .source_file = .{ .path = "src/wav.zig" } });
+    _ = b.addModule("wav", .{ .root_source_file = b.path("src/wav.zig") });
 
     const test_step = b.step("test", "Run library tests");
     inline for ([_][]const u8{ "src/sample.zig", "src/wav.zig" }) |test_file| {
