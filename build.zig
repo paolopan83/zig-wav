@@ -11,7 +11,7 @@ pub fn build(b: *std.Build) void {
     const test_step = b.step("test", "Run library tests");
     inline for ([_][]const u8{ "src/sample.zig", "src/wav.zig" }) |test_file| {
         const t = b.addTest(.{
-            .root_source_file = .{ .path = test_file },
+            .root_source_file = b.path(test_file),
             .target = target,
             .optimize = optimize,
         });
