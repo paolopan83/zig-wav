@@ -35,7 +35,7 @@ Add `zig-wav` to your `build.zig.zon`:
 Add to your `build.zig`:
 ```zig
 const wav_mod = b.dependency("wav", .{ .target = target, .optimize = optimize }).module("wav");
-exe.addModule("wav", "wav_mod");
+exe.root_module.addImport("wav", wav_mod);
 ```
 
 
